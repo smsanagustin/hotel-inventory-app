@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Passenger } from '../../model/passenger.interface';
+import { PassengerDashboardService } from '../../passenger-dashboard.service';
 
 @Component({
   selector: 'passenger-dashboard',
   template: ` <div>
     <h2>Airline Passengers</h2>
     <passenger-count [items]="airlinePassengers"></passenger-count>
-    <div *ngFor="let passenger of airlinePassengers">
-      {{ passenger.fullname }}
+    <div class="passenger-list">
+      <div *ngFor="let passenger of airlinePassengers">
+        {{ passenger.fullname }}
+      </div>
     </div>
     <passenger-detail
       *ngFor="let passenger of airlinePassengers"
@@ -20,9 +23,10 @@ import { Passenger } from '../../model/passenger.interface';
 })
 export class PassengerDashboardComponent implements OnInit {
   airlinePassengers: Passenger[] = [];
-  constructor() {}
+  constructor(private passengerService: PassengerDashboardService) {}
+
   ngOnInit() {
-    this.airlinePassengers;
+    this.airlinePassengers = this.passengerService.getPassengers();
   }
 
   handleEdit(event: any) {
