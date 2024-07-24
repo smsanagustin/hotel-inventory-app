@@ -1,0 +1,19 @@
+.status {
+  padding: 4px 5px;
+  border-radius: 8px;
+  color: white;
+  font-family: Sans-Serif;
+}
+
+.input-field {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+
+  button {
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: black;
+  }
+}
