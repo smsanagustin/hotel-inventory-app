@@ -22,24 +22,38 @@ export class PassengerDashboardComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.passengerService.getPassengers().subscribe((data: Passenger[]) => {
-      this.airlinePassengers = data;
-    });
+    this.passengerService.getPassengers().subscribe(
+      (data: Passenger[]) => {
+        this.airlinePassengers = data;
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
   }
 
-  handleEdit(event: any) {
-    this.airlinePassengers = this.airlinePassengers.map((passenger) => {
-      if (passenger.id === event.id) {
-        passenger = Object.assign({}, passenger, event);
-      }
-      return passenger;
-    });
-    console.log(this.airlinePassengers);
+  handleEdit(event: Passenger) {
+    this.passengerService
+      .updatePassenger(event)
+      .subscribe((data: Passenger) => {
+        this.airlinePassengers = this.airlinePassengers.map((passenger) => {
+          if (passenger.id === event.id) {
+            passenger = Object.assign({}, passenger, event);
+          }
+          return passenger;
+        });
+      });
   }
 
   handleRemove(event: any) {
-    this.airlinePassengers = this.airlinePassengers.filter(
-      (passenger: Passenger) => passenger.id !== event.id,
-    );
+    // server-side update
+    this.passengerService
+      .deletePassenger(event)
+      .subscribe((data: Passenger) => {
+        // client-side update
+        this.airlinePassengers = this.airlinePassengers.filter(
+          (passenger: Passenger) => passenger.id !== event.id,
+        );
+      });
   }
 }
