@@ -2,49 +2,49 @@
   "passengers": [
     {
       "id": 2,
-      "fullname": "john",
+      "fullname": "John",
       "checkedIn": false,
       "children": [
         {
-          "name": "sophie",
+          "name": "Sophie",
           "age": 3
         },
         {
-          "name": "jericho",
+          "name": "Jericho",
           "age": 9
         }
       ]
     },
     {
       "id": 3,
-      "fullname": "mary",
+      "fullname": "Mary",
       "checkedIn": true,
       "checkedInDate": 1490742000000
     },
     {
       "id": 4,
-      "fullname": "paul",
+      "fullname": "Paul",
       "checkedIn": false
     },
     {
       "id": 5,
-      "fullname": "lisa",
+      "fullname": "Lisa",
       "checkedIn": true,
       "checkedInDate": 1490742000000,
       "children": [
         {
-          "name": "pips",
+          "name": "Pips",
           "age": 3
         },
         {
-          "name": "marius",
+          "name": "Marius",
           "age": 8
         }
       ]
     },
     {
       "id": 6,
-      "fullname": "mark",
+      "fullname": "Mark",
       "checkedIn": false
     }
   ]

@@ -7,11 +7,6 @@ import { PassengerDashboardService } from '../../passenger-dashboard.service';
   template: ` <div>
     <h2>Airline Passengers</h2>
     <passenger-count [items]="airlinePassengers"></passenger-count>
-    <div class="passenger-list">
-      <div *ngFor="let passenger of airlinePassengers">
-        {{ passenger.fullname }}
-      </div>
-    </div>
     <passenger-detail
       *ngFor="let passenger of airlinePassengers"
       [passenger]="passenger"

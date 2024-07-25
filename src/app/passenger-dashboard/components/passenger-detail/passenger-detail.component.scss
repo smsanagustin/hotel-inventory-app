@@ -1,19 +1,52 @@
+.passenger-container {
+  margin-bottom: 40px;
+  border-radius: 10px;
+  padding: 12px 10px 4px 10px;
+  box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.48);
+  -webkit-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.48);
+  -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.48);
+}
+
 .status {
   padding: 4px 5px;
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
   font-family: Sans-Serif;
+  width: 120px;
+  text-align: center;
 }
 
 .input-field {
+  font-size: 18px;
+}
+
+.buttons {
   display: flex;
   gap: 4px;
-  margin-top: 10px;
 
   button {
     border: none;
     border-radius: 4px;
     color: white;
-    background-color: black;
+    background-color: gray;
+    padding: 4px 8px;
+    font-size: 15px;
   }
+}
+
+.name-status {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-name {
+  font-size: 18px;
+}
+
+.passenger-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

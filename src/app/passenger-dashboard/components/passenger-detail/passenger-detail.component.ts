@@ -12,42 +12,47 @@ import { Passenger } from '../../model/passenger.interface';
 @Component({
   selector: 'passenger-detail',
   template: `
-    <div>
-      <span
-        class="status"
-        [ngStyle]="{
-          backgroundColor: passenger.checkedIn ? 'green' : 'red',
-        }"
-      >
-        {{ passenger.checkedIn ? 'Checked in' : 'Checked out' }}
-      </span>
-      :
-      <span *ngIf="!isEditing">{{ passenger.fullname }}</span>
-      <div class="input-field">
-        <input
-          *ngIf="isEditing"
-          [value]="passenger.fullname"
-          (input)="onChangeName(fullname.value)"
-          #fullname
-        />
-        <button (click)="toggleEdit()">
-          {{ !isEditing ? 'Edit' : 'Done' }}
-        </button>
-        <button (click)="removePassenger()">Remove</button>
+    <div class="passenger-container">
+      <div class="passenger-item">
+        <div class="name-status">
+          <span class="user-name" *ngIf="!isEditing">{{
+            passenger.fullname
+          }}</span>
+
+          <input
+            class="input-field"
+            *ngIf="isEditing"
+            [value]="passenger.fullname"
+            (input)="onChangeName(fullname.value)"
+            #fullname
+          />
+
+          <span
+            class="status"
+            [ngStyle]="{
+              backgroundColor: passenger.checkedIn ? 'green' : 'red',
+            }"
+          >
+            {{ passenger.checkedIn ? 'Checked in' : 'Checked out' }}
+          </span>
+        </div>
+        <div class="buttons">
+          <button (click)="toggleEdit()">
+            {{ !isEditing ? 'Edit' : 'Done' }}
+          </button>
+          <button (click)="removePassenger()">Remove</button>
+        </div>
       </div>
-    </div>
-    <div>
-      <p>
-        Checked in date:
-        {{
-          passenger.checkedIn
-            ? (passenger.checkedInDate | date: 'MMMM d, YYYY' | uppercase)
-            : 'Not checked in!'
-        }}
-      </p>
-    </div>
-    <div>
-      <p>Children: {{ passenger.children?.length || 0 }}</p>
+      <div>
+        <p>
+          Checked in date:
+          {{
+            passenger.checkedIn
+              ? (passenger.checkedInDate | date: 'MMMM d, YYYY' | uppercase)
+              : 'Not checked in!'
+          }}
+        </p>
+      </div>
     </div>
   `,
   styleUrl: 'passenger-detail.component.scss',
