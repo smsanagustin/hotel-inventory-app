@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Passenger } from '../../model/passenger.interface';
 import { PassengerDashboardService } from '../../passenger-dashboard.service';
 
@@ -23,10 +23,13 @@ import { PassengerDashboardService } from '../../passenger-dashboard.service';
 })
 export class PassengerDashboardComponent implements OnInit {
   airlinePassengers: Passenger[] = [];
-  constructor(private passengerService: PassengerDashboardService) {}
+  passengerService = inject(PassengerDashboardService);
+  constructor() {}
 
   ngOnInit() {
-    this.airlinePassengers = this.passengerService.getPassengers();
+    this.passengerService.getPassengers().subscribe((data: Passenger[]) => {
+      this.airlinePassengers = data;
+    });
   }
 
   handleEdit(event: any) {
