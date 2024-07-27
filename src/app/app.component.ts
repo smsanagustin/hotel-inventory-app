@@ -3,7 +3,7 @@ import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashbo
 
 @Component({
   selector: 'app-root',
-  template: ` <passenger-dashboard></passenger-dashboard> `,
+  template: ` <passenger-viewer></passenger-viewer> `,
   styleUrl: './app.component.scss',
   imports: [PassengerDashboardModule],
   standalone: true,

@@ -1,15 +1,43 @@
 {
   "passengers": [
     {
+      "fullname": "peter parker",
+      "id": "1",
+      "checkedIn": false,
+      "baggage": "hand-hold"
+    },
+    {
+      "id": "2",
+      "fullname": "Lebron",
+      "checkedIn": true,
+      "checkedInDate": 1490742000000,
+      "baggage": "6"
+    },
+    {
       "id": "3",
       "fullname": "Mary",
       "checkedIn": true,
-      "checkedInDate": 1490742000000
+      "checkedInDate": 1490742000000,
+      "baggage": ""
+    },
+    {
+      "id": "4",
+      "fullname": "Luka",
+      "checkedIn": true,
+      "checkedInDate": 1490742000000,
+      "baggage": ""
+    },
+    {
+      "id": "5",
+      "fullname": "Micah",
+      "checkedIn": false,
+      "baggage": ""
     },
     {
       "id": "6",
       "fullname": "Mark",
-      "checkedIn": false
+      "checkedIn": false,
+      "baggage": ""
     }
   ]
 }
