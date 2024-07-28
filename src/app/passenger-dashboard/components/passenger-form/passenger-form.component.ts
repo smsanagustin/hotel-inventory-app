@@ -9,7 +9,6 @@ import { Baggage } from '../../model/baggage.interface';
       <h1>Passenger form</h1>
 
       <form #form="ngForm" (ngSubmit)="handleSubmit(form.value, !!form.valid)">
-        {{ detail | json }}
         <div>
           Passenger name:
           <input
@@ -30,6 +29,7 @@ import { Baggage } from '../../model/baggage.interface';
             Name should have at least 4 characters.
           </div>
         </div>
+        <br />
         <div>
           Passenger ID:
           <input
@@ -44,9 +44,7 @@ import { Baggage } from '../../model/baggage.interface';
           </div>
         </div>
         <div>
-          {{ form.value | json }}
-        </div>
-        <div>
+          <label to="checkedIn">Checked in?</label>
           <input
             type="checkbox"
             name="checkedIn"

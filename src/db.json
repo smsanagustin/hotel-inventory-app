@@ -1,7 +1,7 @@
 {
   "passengers": [
     {
-      "fullname": "peter parker",
+      "fullname": "stephen strange",
       "id": "1",
       "checkedIn": false,
       "baggage": "hand-hold"
@@ -21,11 +21,11 @@
       "baggage": ""
     },
     {
+      "fullname": "Lebron James",
       "id": "4",
-      "fullname": "Luka",
       "checkedIn": true,
-      "checkedInDate": 1490742000000,
-      "baggage": ""
+      "baggage": "",
+      "checkedInDate": 1490742000000
     },
     {
       "id": "5",

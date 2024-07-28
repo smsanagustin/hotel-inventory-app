@@ -22,6 +22,10 @@ const routes: Routes = [
     component: PassengerDashboardComponent,
     pathMatch: 'full',
   },
+  {
+    path: ':id',
+    component: PassengerViewerComponent,
+  },
 ];
 
 @NgModule({
@@ -38,7 +42,11 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes),
   ],
-  exports: [PassengerViewerComponent, PassengerDashboardComponent],
+  exports: [
+    PassengerViewerComponent,
+    PassengerDashboardComponent,
+    RouterModule,
+  ],
   providers: [PassengerDashboardService],
 })
 export class PassengerDashboardModule {}

@@ -1,10 +1,13 @@
 import { Component, inject, input, OnInit } from '@angular/core';
 import { PassengerDashboardService } from '../../passenger-dashboard.service';
 import { Passenger } from '../../model/passenger.interface';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable, switchMap, switchMapTo } from 'rxjs';
 
 @Component({
   selector: 'passenger-viewer',
   template: `
+    <button (click)="goBack()">&lsaquo; Go back</button>
     <passenger-form
       [detail]="passenger"
       (passengerUpdate)="handleUpdate($event)"
@@ -17,12 +20,20 @@ export class PassengerViewerComponent {
   passengerService: PassengerDashboardService = inject(
     PassengerDashboardService,
   );
-  constructor() {}
+  private route: ActivatedRoute = inject(ActivatedRoute);
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    this.passengerService.getPassenger(1).subscribe((data: Passenger) => {
-      this.passenger = data;
-    });
+    this.route.params
+      .pipe(
+        switchMap((data: Params) =>
+          this.passengerService.getPassenger(data['id']),
+        ),
+      )
+      .subscribe((data: Passenger) => {
+        this.passenger = Object.assign({}, this.passenger, data);
+      });
   }
 
   handleUpdate(passenger: Passenger) {
@@ -33,5 +44,9 @@ export class PassengerViewerComponent {
           this.passenger = Object.assign({}, this.passenger, data);
         });
     }
+  }
+
+  goBack() {
+    this.router.navigate(['/passengers']);
   }
 }

@@ -41,6 +41,7 @@ import { Passenger } from '../../model/passenger.interface';
             {{ !isEditing ? 'Edit' : 'Done' }}
           </button>
           <button (click)="removePassenger()">Remove</button>
+          <button (click)="emitViewEvent()">View</button>
         </div>
       </div>
       <div>
@@ -61,8 +62,9 @@ export class PassengerDetailComponent implements OnChanges {
   @Input() passenger: Passenger = {} as Passenger;
   isEditing: boolean = false;
 
-  @Output() remove: EventEmitter<any> = new EventEmitter();
-  @Output() edit: EventEmitter<any> = new EventEmitter();
+  @Output() remove: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+  @Output() edit: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+  @Output() view: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['passenger']) {
@@ -83,5 +85,9 @@ export class PassengerDetailComponent implements OnChanges {
 
   removePassenger() {
     this.remove.emit(this.passenger);
+  }
+
+  emitViewEvent() {
+    this.view.emit(this.passenger);
   }
 }
